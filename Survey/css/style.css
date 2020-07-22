@@ -1,0 +1,158 @@
+﻿body {
+    margin: 0;
+    padding: 0; /*font-family: 'Nunito Sans', sans-serif;*/
+    font-family: 'Oxygen', sans-serif;
+}
+
+img {
+    border: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+.top-nav {
+    text-align: right;
+}
+
+.nav-top li {
+    display: inline-block;
+}
+
+.nav-top li a {
+font-size: 15px;
+color: #fff;
+padding: 15px 18px;
+display: inline-block;
+font-weight:500;
+}
+
+.nav-top li a:hover {
+color: #26ace2;
+}
+
+
+.logo {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff; padding:3px 0px;
+}
+.header {
+    background:#273895;
+}
+.banner {
+    margin:0px 0px;
+}
+footer {
+    background: #26ace2;
+    padding: 20px 0px;
+    text-align: center;
+}
+    footer p {
+        font-size: 14px;
+        color: #fff;
+    }
+
+.middle {
+    max-width: 700px; display:block; margin:0px auto 25px auto; background:#fff; padding:0px 0px;
+}
+.wrapper {
+    background: #f9f9f9; padding:25px 0px;
+}
+.wrapper h2 {
+    text-align: center;
+    display: block;
+    font-size: 30px;
+    color: #273895;  font-weight: 600; margin:15px 0px; display:block;
+}
+.middle h3 {
+    background: #ccc;
+    padding: 12px 0px;
+    text-align: center;
+    font-size:22px;
+    color: #000;
+    font-weight: 600; margin:0px; display:block;
+}
+.middle p {
+    padding:10px 0px;
+    text-align: center;
+    font-size:14px;
+    color: #000;
+    font-weight: 500; margin:0px; display:block; border-bottom:1px solid#ccc;
+}
+.username {
+    display: block;
+    padding: 5px 0px;
+    margin-top:0px;
+    width:100%;
+}
+.usernames {
+    display: block;
+    padding: 5px 0px;
+    margin-top:0px;
+    width:100%;
+}
+.usernames2 {
+    display: block;
+    padding: 14px 0px;
+    margin-top:0px;
+    width:100%;
+}
+.username label {
+    font-size: 14px;
+    color: #273895;
+    font-weight: 500; text-align:right; padding:9px 0px; display:block;
+}
+.username input {
+    font-size: 14px;
+    color: #273895;
+    font-weight: 500; border:1px solid #ccc; padding:8px; border-radius:6px; width:100%; background:#fff;
+}
+.username select {
+    font-size: 14px;
+    color: #273895;
+    font-weight: 500; border:1px solid #ccc; padding:8px; border-radius:6px; width:100%;
+}
+
+.radio {
+    display: inline-block;
+    padding-right: 8px;
+}
+
+.middleform {
+    max-width:500px;
+    display: block;
+    margin: 0px auto;
+    padding: 0px 0px;
+}
+
+.save {
+    background: green;
+    font-size: 14px;
+    padding: 8px 20px;
+    display: inline-block;
+    margin: 10px 10px;
+    color:#fff;
+    font-weight:600;
+    border-radius:6px;
+}
+.cancel {
+    background:#273895;
+    font-size: 14px;
+    padding: 8px 20px;
+    display: inline-block;
+    margin-right: 10px; color:#fff; font-weight:600; border-radius:6px;
+}

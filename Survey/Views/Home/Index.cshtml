@@ -1,0 +1,255 @@
+﻿@model Survey.Models.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="banner">
+    <img class="img-responsive" src="@Url.Content("~/images/banner1.jpg")" alt="" />
+</div>
+
+<div class="wrapper">
+    <h2>Survey</h2>
+    <div class="middleform">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="username">
+                    <input id="name" type="text" placeholder="Name" />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Age</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="username">
+                    <input id="age" type="number" placeholder="Age(<100)" />
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Gender</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="usernames">
+                    <div class="radio">
+                        <label><input type="radio" name="gendervalue" value="Tran" checked />Tran</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="gendervalue" value="She" />She</label>
+                    </div>
+                    <div class="radio">
+                        <label>  <input type="radio" name="gendervalue" value="He" />He</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Email Id</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="username">
+                    <input id="email" type="email" placeholder="Email Id" />
+                    <label id="error"></label>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>City</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="username">
+                   @Html.DropDownListFor(m => m.CityId, new SelectList(Model.cityinfo, "CityId", "CityName"), "Select City", new { @id = "city" })
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Upload Resume</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="username">
+                    <input type="file" id="FileUpload1" />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4">
+                <div class="username">
+                    <label>Education</label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="usernames2">
+                    <label class="checkbox-inline"><input type="radio" name="educationvalue" value="10Th" checked/>10Th</label>
+                    <label class="checkbox-inline"><input type="radio" name="educationvalue" value="12Th" />12Th</label>
+                    <label class="checkbox-inline"><input type="radio" name="educationvalue" value="Degree" />Degree</label>
+                    <label class="checkbox-inline"><input type="radio" name="educationvalue" value="Master" />Master</label>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4"></div>
+            <input type="button" class="save" id="btnUpload" value="Save" />
+            <input type="button" class="cancel" id="cancel" value="cancel" />
+
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+       $("#name").keypress(function(e) {
+           var keyCode = e.keyCode || e.which;
+           var regex = /^[A-Za-z0-9]+$/;
+           var isValid = regex.test(String.fromCharCode(keyCode));
+           if (!isValid)
+           {
+               
+           }
+           if ($.isNumeric($(this).val().slice(0, 1))) {
+               $(this).val('');
+               alert('First letter should not be Numeric.!');
+           }
+           return isValid;    
+});
+
+        
+        $("#age").on("change", function () {
+            $('#age').css("border", "");
+            var val = parseInt(this.value);
+            if (val > 100 || val < 1) {
+                $('#age').css("border", "1px solid red");
+                this.value = '';
+            }
+        })
+        $('#cancel').click(function () {
+            window.location.reload();
+        });
+
+        $('#FileUpload1').change(function () {
+            debugger;
+            var ext = this.value.match(/\.(.+)$/)[1];
+            switch (ext) {
+                case 'txt':
+                    break;
+                default:
+                    alert('This is not an allowed file type.');
+                    this.value = '';
+            }
+        });
+
+        $('#btnUpload').click(function () {
+            debugger;
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var gender = $('input[name=gendervalue]:checked').val();
+            var email = document.getElementById("email").value;
+            var city = ($("#city option:selected").text());
+            var fileval = document.getElementById("FileUpload1").value; 
+            var education = $('input[name=educationvalue]:checked').val();
+            var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            var status = "Okay"
+            $('#FileUpload1').css("border", "");
+            $('#name').css("border", "");
+            $('#age').css("border", "");
+            $('#email').css("border", "");
+            $('#city').css("border", "");
+            if (email != "") {
+                if (!expr.test(email)) {
+                    $('#email').css("border", "1px solid red");
+                    status = "Not okay"
+                    $('#error').text('Invalid Email');
+                }
+                else {
+                    $('#error').text('Valid Email');
+                }
+            }
+            if (fileval == "") {
+                $('#FileUpload1').css("border", "1px solid red");
+                status = "Not okay"
+            }
+
+           
+            if (name.length > 1) {
+                names = name.substr(0, 1);
+                if (!((names >= 'a' && names <= 'z') || (names >= 'A' && names <= 'Z')))
+                {
+                    status = "Not okay"
+                    $('#name').css("border", "1px solid red");
+                    alert('First letter should not be Numeric.!');
+                    event.returnValue = false; }
+                else {
+                    
+                }
+                   
+            }
+        
+
+            if (name == "")
+            {
+                $('#name').css("border", "1px solid red");
+             status="Not okay"
+            }
+            if (age == "") {
+                $('#age').css("border", "1px solid red");
+                status = "Not okay"
+            }
+            if (email == "") {
+                $('#email').css("border", "1px solid red");
+                status = "Not okay"
+            }
+            if (city == "Select City") {
+                $('#city').css("border", "1px solid red");
+                status = "Not okay"
+            }
+            if (status == "Okay")
+            {
+                var fileUpload = $("#FileUpload1").get(0);
+                var files = fileUpload.files;
+                var fileData = new FormData();
+                fileData.append(files[0].name, files[0]);
+                fileData.append('name', name);
+                fileData.append('age', age);
+                fileData.append('email', email);
+                fileData.append('education', education);
+                fileData.append('gender', gender);
+                fileData.append('city', city);
+                $.ajax({
+                    url: '/Home/UploadFiles',
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: fileData,
+                    success: function (result) {
+                        alert(result);
+                        window.location.reload();
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+            }
+
+           
+        });
+    });
+</script>
+
+
+

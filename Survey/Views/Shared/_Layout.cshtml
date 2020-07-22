@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="logo">
+                            LOGO
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="top-nav">
+                            <ul class="nav-top">
+                                <li><a href="@Url.Action("Index", "Home")">Save Survey</a></li>
+                                <li><a href="@Url.Action("Survey", "Survey")">Get Survey</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            @RenderBody()
+            <hr />
+        </div>
+
+        <footer>
+            <p>© 2020 Copyright All Rights Reserved</p>
+        </footer>
+        <script type="text/javascript" src="@Url.Content("~/js/jquery-1.12.3.min.js")"></script>
+        <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+
+
+    </form>
+   
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Survey.Models.Class1>
+@{
+    ViewBag.Title = "Survey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table, th, td {
+        border: 2px solid black ;
+        border-collapse: collapse;
+    }
+</style>
+<div class="wrapper">
+    <div class="banner">
+        <img class="img-responsive" src="@Url.Content("~/images/banner1.jpg")" alt="" />
+    </div>
+    
+    <h2>Survey</h2>
+            <table style="width:80%;margin-top:50px;text-align:center;margin-left:70px">
+                <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Gender</td>
+                    <td>Email</td>
+                    <td>Education</td>
+                    <td>City</td>
+                    <td>File</td>
+                </tr>
+                @foreach (var Result in Model)
+                {
+                    <tr class="row100">
+                        <td>@Result.name</td>
+                        <td>@Result.age</td>
+                        <td>@Result.gender</td>
+                        <td>@Result.email</td>
+                        <td>@Result.education</td>
+                        <td>@Result.city</td>
+                        <td>@Result.file</td>
+                    </tr>
+                }
+                </table>
+
+       
+</div>
+
